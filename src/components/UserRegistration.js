@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { registerUser } from '../services/UserService';
 import './UserRegistration.css';
 
 const UserRegistration = () => {
-
   const [userDTO, setUserDTO] = useState({
     name: '',
     email: '',
@@ -39,7 +39,7 @@ const UserRegistration = () => {
       if (response && typeof response === 'object' && response.status === 201) {
         alert('User registered successfully!');
       } else if (typeof response === 'string') {
-        alert(response);  
+        alert(response);
       }
     } catch (error) {
       if (error.response) {
@@ -53,42 +53,48 @@ const UserRegistration = () => {
       }
     }
   };
-  
+
   return (
-    <div className="form-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Name" onChange={handleChange} required />
-        <input name="email" placeholder="Email" onChange={handleChange} required />
-        <input name="username" placeholder="Username" onChange={handleChange} required />
-        <input name="password" placeholder="Password" onChange={handleChange} type="password" required />
+    <div>
+      <nav className="navbar">
+        <Link to="/" className="navbar-link">Logout</Link>
+      </nav>
 
-        <div className="radio-group">
-          <label>Department:</label>
-          <select name="department" onChange={handleChange}>
-            <option value="">Select Department</option>
-            {departments.map((dept) => (
-              <option value={dept.value} key={dept.value}>
-                {dept.label}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="form-container">
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit}>
+          <input name="name" placeholder="Name" onChange={handleChange} required />
+          <input name="email" placeholder="Email" onChange={handleChange} required />
+          <input name="username" placeholder="Username" onChange={handleChange} required />
+          <input name="password" placeholder="Password" onChange={handleChange} type="password" required />
 
-        <div className="radio-group">
-          <label>Role:</label>
-          <select name="role" onChange={handleChange}>
-            <option value="">Select Role</option>
-            {roles.map((role) => (
-              <option value={role.value} key={role.value}>
-                {role.label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="radio-group">
+            <label>Department:</label>
+            <select name="department" onChange={handleChange}>
+              <option value="">Select Department</option>
+              {departments.map((dept) => (
+                <option value={dept.value} key={dept.value}>
+                  {dept.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <button type="submit">Register</button>
-      </form>
+          <div className="radio-group">
+            <label>Role:</label>
+            <select name="role" onChange={handleChange}>
+              <option value="">Select Role</option>
+              {roles.map((role) => (
+                <option value={role.value} key={role.value}>
+                  {role.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
     </div>
   );
 };

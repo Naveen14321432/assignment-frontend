@@ -1,23 +1,25 @@
+// src/pages/TeacherDashboard.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/teacher.css';
 
 const TeacherDashboard = () => {
     return (
         <>
-        <div className="navbar">
-            <h1>Teacher Dashboard</h1>
-            <div className="navbar-links">
-                <a href="#assignments" className="navbar-link">Create Assignments</a>
-                <a href="#submissions" className="navbar-link">View Submissions</a>
-                <a href="#grades" className="navbar-link">Grade Assignments</a>
-                <a href="/" className="navbar-link">Logout</a>
+            <div className="navbar">
+                <h1>Teacher Dashboard</h1>
+                <div className="navbar-links">
+                    <Link to="/create-assignment" className="navbar-link">Create Assignment</Link>
+                    <Link to="/grade" className="navbar-link">Give Grade</Link>
+                    <Link to="/submissions-by-assignment" className="navbar-link">View Submissions</Link>
+                    <Link to="/" className="navbar-link">Logout</Link>
+                </div>
             </div>
-        </div>
-        <div className="main-content">
-            <h2>Welcome to the teacher dashboard!</h2>
-            <p>Here you can create assignments, grade assignments and view students submissions.</p>
-        </div>
-    </>
+            <div className="main-content">
+                <h2>Welcome to the Teacher Dashboard!</h2>
+                <p>Here you can create assignments, manage submissions, and grade students' work.</p>
+            </div>
+        </>
     );
 };
 

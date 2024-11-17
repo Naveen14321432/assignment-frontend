@@ -1,0 +1,71 @@
+/* Basic styling for all form elements */
+input, textarea, button {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="date"], textarea {
+    background-color: #fff;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Specific styling for the form container */
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Input styling */
+input[type="text"], input[type="date"], textarea {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;  /* Adjustable height */
+}
+
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+li span {
+    font-weight: bold;
+}
