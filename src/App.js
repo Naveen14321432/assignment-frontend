@@ -12,15 +12,16 @@ function App() {
   return (
     <Router>
       <div>
-        <Routes>
-          <Route path="/" element={<UserLogin />} />
-          <Route path="/register" element={<UserRegistration />} />
-          <Route path="/student-dashboard" element={<StudentDashboard />} />
-          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
-          <Route path="/create-assignment" element={<CreateAssignment />} /> 
-          <Route path="/submit-assignment" element={<SubmitAssignment />} /> 
-          <Route path="/view-assignments" element={<AssignmentList />} /> 
-        </Routes>
+      <Routes>
+        <Route path="/" element={<UserLogin />} />
+        <Route path="/register" element={<UserRegistration />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+        <Route path="/create-assignment" element={<CreateAssignment />} />
+        <Route path="/submit-assignment" element={<SubmitAssignment />} /> 
+        <Route path="/submit-assignment/:assignmentId" element={<SubmitAssignment />} />
+        <Route path="/view-assignments" element={<AssignmentList />} />
+      </Routes>
       </div>
     </Router>
   );

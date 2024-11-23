@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function SubmitAssignment() {
-    const [assignmentId, setAssignmentId] = useState('');
+    const { assignmentId } = useParams(); // Fetch assignmentId from URL
     const [studentUsername, setStudentUsername] = useState('');
     const [fileUrl, setFileUrl] = useState('');
 
@@ -13,7 +13,7 @@ function SubmitAssignment() {
         const submissionData = {
             assignmentId,
             studentUsername,
-            fileUrl, 
+            fileUrl,
         };
 
         try {
@@ -31,7 +31,8 @@ function SubmitAssignment() {
             <div className="navbar">
                 <h1>Student Dashboard</h1>
                 <div className="navbar-links">
-                    <Link to="/submit-assignment" className="navbar-link">Submit Assignment</Link>
+                    <Link to="/view-assignments" className="navbar-link">View Assignments</Link>
+                    <Link to="/submit-assignment" className="navbar-link">My Submissions</Link>
                     <Link to="/view-grades" className="navbar-link">View Grades</Link>
                     <Link to="/" className="navbar-link">Logout</Link>
                 </div>
@@ -42,9 +43,8 @@ function SubmitAssignment() {
                     <label>Assignment ID</label>
                     <input
                         type="text"
-                        value={assignmentId}
-                        onChange={(e) => setAssignmentId(e.target.value)}
-                        required
+                        value={assignmentId || ''}
+                        disabled // Prevent editing assignmentId
                     />
                 </div>
                 <div>
@@ -59,7 +59,7 @@ function SubmitAssignment() {
                 <div>
                     <label>File URL</label>
                     <input
-                        type="text"
+                        type="file"
                         value={fileUrl}
                         onChange={(e) => setFileUrl(e.target.value)}
                         required

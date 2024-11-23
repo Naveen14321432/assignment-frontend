@@ -11,7 +11,7 @@ const StudentDashboard = () => {
                 <div className="navbar-links">
                     <Link to="/view-assignments" className="navbar-link">View Assignments</Link>
                     <Link to="/submit-assignment" className="navbar-link">My Submissions</Link>
-                    <Link to="/my-grades" className="navbar-link">My Grades</Link>
+                    <Link to="/my-grades" className="navbar-link">View Grades</Link>
                     <Link to="/" className="navbar-link">Logout</Link>
                 </div>
             </div>

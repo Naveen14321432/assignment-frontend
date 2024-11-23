@@ -9,6 +9,11 @@
   gap: 10px;
 }
 
+body {
+  margin: 0;
+  padding-top: 60px; /* Adjust based on navbar height */
+}
+
 .navbar-link-button {
   background-color: #3c8dbc;
   color: white;
