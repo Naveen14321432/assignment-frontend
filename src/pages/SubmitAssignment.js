@@ -5,19 +5,34 @@ import { Link, useParams } from 'react-router-dom';
 function SubmitAssignment() {
     const { assignmentId } = useParams(); // Fetch assignmentId from URL
     const [studentUsername, setStudentUsername] = useState('');
-    const [fileUrl, setFileUrl] = useState('');
+    const [file, setFile] = useState(null); // Store the file object
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const submissionData = {
-            assignmentId,
-            studentUsername,
-            fileUrl,
-        };
+        if (!file) {
+            alert('Please select a file to submit.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('assignmentId', assignmentId);
+        formData.append('studentUsername', studentUsername);
+        formData.append('file', file); // Append the file to the form data
 
         try {
-            const response = await axios.post('http://localhost:8888/api/submissions', submissionData);
+            const response = await axios.post('http://localhost:8888/api/submissions/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Set correct content type for file upload
+                },
+            });
             console.log('Assignment submitted:', response.data);
             alert('Assignment submitted successfully!');
         } catch (error) {
@@ -57,11 +72,10 @@ function SubmitAssignment() {
                     />
                 </div>
                 <div>
-                    <label>File URL</label>
+                    <label>File</label>
                     <input
                         type="file"
-                        value={fileUrl}
-                        onChange={(e) => setFileUrl(e.target.value)}
+                        onChange={handleFileChange} // Handle file selection
                         required
                     />
                 </div>
