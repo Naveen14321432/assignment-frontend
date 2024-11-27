@@ -7,6 +7,7 @@ import TeacherDashboard from './pages/TeacherDashboard';
 import CreateAssignment from './pages/CreateAssignment';  
 import SubmitAssignment from './pages/SubmitAssignment';
 import AssignmentList from './pages/AssignmentList';
+import ViewSubmissions from './pages/ViewSubmissions';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/submit-assignment" element={<SubmitAssignment />} /> 
         <Route path="/submit-assignment/:assignmentId" element={<SubmitAssignment />} />
         <Route path="/view-assignments" element={<AssignmentList />} />
+        <Route path="/view-submissions" element={<ViewSubmissions/>} />
       </Routes>
       </div>
     </Router>

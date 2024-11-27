@@ -34,7 +34,7 @@ function CreateAssignment() {
                 <div className="navbar-links">
                     <Link to="/create-assignment" className="navbar-link">Create Assignment</Link>
                     <Link to="/grade" className="navbar-link">Give Grade</Link>
-                    <Link to="/submissions-by-assignment" className="navbar-link">View Submissions</Link>
+                    <Link to="/submissions" className="navbar-link">View Submissions</Link>
                     <Link to="/" className="navbar-link">Logout</Link>
                 </div>
             </div>
