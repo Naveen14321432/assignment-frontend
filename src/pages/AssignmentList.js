@@ -31,7 +31,6 @@ function AssignmentList() {
                 <h1>Assignments</h1>
                 <div className="navbar-links">
                     <Link to="/view-assignments" className="navbar-link">View Assignments</Link>
-                    <Link to="/submit-assignment" className="navbar-link">My Submissions</Link>
                     <Link to="/my-grades" className="navbar-link">View Grades</Link>
                     <Link to="/" className="navbar-link">Logout</Link>
                 </div>
@@ -41,6 +40,7 @@ function AssignmentList() {
                 <ul className="assignment-list">
                     {assignments.map((assignment) => {
                         const isExpired = new Date(assignment.dueDate) < new Date(); // Check if due date has passed
+                        const fileUrl = `http://localhost:8888/uploads/${assignment.description}`; // Construct file URL
 
                         return (
                             <li key={assignment.id}>
@@ -48,6 +48,12 @@ function AssignmentList() {
                                 <p>{assignment.description}</p>
                                 <p><strong>Due Date:</strong> {assignment.dueDate}</p>
                                 <p><strong>Assigned By:</strong> {assignment.teacherUsername}</p>
+                                <p>
+                                    <strong>File:</strong>{' '}
+                                    <a href={fileUrl} target="_blank" rel="noopener noreferrer">
+                                        {assignment.description}
+                                    </a>
+                                </p>
                                 {!isExpired && (
                                     <button
                                         className="submit-btn"

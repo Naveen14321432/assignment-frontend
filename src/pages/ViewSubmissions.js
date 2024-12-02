@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/viewsubmissions.css";
+import TeacherNavbar from "./TeacherNavbar";
 
 const ViewSubmissions = () => {
   const [submissions, setSubmissions] = useState([]);
 
-  // Fetch submissions from the backend
   useEffect(() => {
     fetch("/api/submissions")
       .then((response) => {
@@ -15,11 +15,14 @@ const ViewSubmissions = () => {
       })
       .then((data) => setSubmissions(data))
       .catch((error) => console.error("Error fetching submissions:", error));
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []); 
 
   return (
     <div>
+      <TeacherNavbar />
+      <center>
       <h1>View Submissions</h1>
+      </center>
       <table border="1">
         <thead>
           <tr>
