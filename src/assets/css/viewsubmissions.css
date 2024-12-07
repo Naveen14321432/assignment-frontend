@@ -9,12 +9,26 @@ table {
   }
   
 
-  /* viewsubmissions.css */
-.graded {
-  background-color: #dff0d8;
-  color: #3c763d;
-  font-weight: bold;
-}
+  .graded {
+   /* background-color: #dff0d8;*/
+    color: #3c763d;
+    font-weight: bold;
+  }
+  
+  .grade-green {
+    /*background-color: #c8e6c9; /* Green background for A and B */
+    color: #388e3c; /* Dark Green text */
+  }
+  
+  .grade-yellow {
+    /*background-color: #fff9c4; /* Yellow background for C and D */
+    color: #f3ae00; /* Dark Yellow text */
+  }
+  
+  .grade-red {
+    background-color: #ea5564; /* Red background for F */
+    color: #c62828; /* Dark Red text */
+  }
 
 
   th {
@@ -33,4 +47,58 @@ table {
   a:hover {
     text-decoration: underline;
   }
+  input[type="text"] {
+    width: 65px;
+    padding: 9px; /* Make input box padding consistent */
+    margin-right: 10px;
+    height: 30px; /* Set consistent height */
+    box-sizing: border-box; /* Ensure padding doesn't affect total height */
+  }
   
+  .grade-input-container {
+    display: flex;
+    /*align-items: center; /* Align input and button horizontally */
+    justify-content: flex-start; /* Ensure the input and button are aligned to the left */
+  }
+  
+  button.grade-button {
+    padding: 10px 9px; /* Make button padding consistent */
+    background-color: #2b3e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 30px; /* Set button height to match input height */
+    display: flex;
+    align-items: center;
+  }
+  
+  button.grade-button:hover {
+    background-color: #42719d;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  /* Header Styles */
+  th {
+    background-color: #2b3e50;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #fff;
+  }

@@ -1,0 +1,88 @@
+/* General styling for the page */
+.login-form {
+    background-color: white;
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Increased width */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Styling for the form container */
+.login-form-container {
+    margin: left 100px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 200%;
+    max-width: 450px; /* Increased width */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: border-box; /* Ensure padding is included in total width */
+}
+
+/* Title styling */
+.login-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Input fields styling */
+.login-input {
+    padding: 14px; /* Increased padding */
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in total width */
+    transition: border-color 0.3s ease;
+}
+
+/* Focus state for input fields */
+.login-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+.login-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #2b3e50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Button hover effect */
+.login-button:hover {
+    background-color: #2d3a45;
+}
+
+/* Button active effect */
+.login-button:active {
+    background-color: #00408d;
+}
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .login-form-container {
+        width: 90%; /* Adjust form width on smaller screens */
+    }
+
+    .login-title {
+        font-size: 1.5rem; /* Smaller title size on mobile */
+    }
+}

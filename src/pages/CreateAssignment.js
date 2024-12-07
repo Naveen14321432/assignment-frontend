@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import TeacherNavbar from './TeacherNavbar';
+import '../assets/css/createAssignment.css';
 
 function CreateAssignment() {
     const [title, setTitle] = useState('');

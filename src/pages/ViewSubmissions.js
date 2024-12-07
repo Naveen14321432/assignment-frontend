@@ -4,10 +4,9 @@ import TeacherNavbar from "./TeacherNavbar";
 
 const ViewSubmissions = () => {
   const [submissions, setSubmissions] = useState([]);
-  const [tempGrade, setTempGrade] = useState({}); // Temporary state for storing grades
+  const [tempGrade, setTempGrade] = useState({});
 
   useEffect(() => {
-    // Fetch submissions from backend (grades included)
     fetch("/api/submissions")
       .then((response) => {
         if (!response.ok) {
@@ -15,16 +14,18 @@ const ViewSubmissions = () => {
         }
         return response.json();
       })
-      .then((data) => setSubmissions(data)) // Save the fetched data (including grades) to state
+      .then((data) => setSubmissions(data))
       .catch((error) => console.error("Error fetching submissions:", error));
   }, []);
 
   const handleGradeChange = (submissionId, grade) => {
-    // Update the temporary grade state for specific submission
-    setTempGrade((prev) => ({
-      ...prev,
-      [submissionId]: grade,
-    }));
+    // Restrict the grade input to A, B, C, D, F only
+    if (["A", "B", "C", "D", "F"].includes(grade.toUpperCase())) {
+      setTempGrade((prev) => ({
+        ...prev,
+        [submissionId]: grade.toUpperCase(),
+      }));
+    }
   };
 
   const handleGradeSubmission = (submissionId) => {
@@ -34,13 +35,12 @@ const ViewSubmissions = () => {
       return;
     }
 
-    // Submit the grade to the backend
     fetch(`/api/submissions/${submissionId}/grade`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ grade }), // Send grade as JSON to backend
+      body: JSON.stringify({ grade }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -49,13 +49,11 @@ const ViewSubmissions = () => {
         return response.json();
       })
       .then((updatedSubmission) => {
-        // Once the grade is submitted, update the submission in the state
         setSubmissions((prev) =>
           prev.map((sub) =>
             sub.id === updatedSubmission.id ? updatedSubmission : sub
           )
         );
-        // Clear the temporary grade state after submission
         setTempGrade((prev) => {
           const updatedTempGrade = { ...prev };
           delete updatedTempGrade[submissionId]; // Remove the graded submission from temp state
@@ -63,6 +61,21 @@ const ViewSubmissions = () => {
         });
       })
       .catch((error) => console.error("Error grading submission:", error));
+  };
+
+  const getGradeClass = (grade) => {
+    switch (grade) {
+      case "A":
+      case "B":
+        return "grade-green"; // Green for A and B
+      case "C":
+      case "D":
+        return "grade-yellow"; // Yellow for C and D
+      case "F":
+        return "grade-red"; // Red for F
+      default:
+        return "";
+    }
   };
 
   return (
@@ -88,7 +101,10 @@ const ViewSubmissions = () => {
               ? `http://localhost:8888/uploads/${submission.fileUrl}`
               : "#";
             return (
-              <tr key={submission.id} className={submission.grade ? "graded" : ""}>
+              <tr
+                key={submission.id}
+                className={getGradeClass(submission.grade)}
+              >
                 <td>{submission.id}</td>
                 <td>{submission.assignmentId}</td>
                 <td>{submission.studentUsername}</td>
@@ -104,21 +120,24 @@ const ViewSubmissions = () => {
                 </td>
                 <td>
                   {submission.grade ? (
-                    <span>Graded: {submission.grade}</span> // Display grade with the message
+                    <span>Graded: {submission.grade}</span>
                   ) : (
-                    <>
+                    <div className="grade-input-container">
                       <input
                         type="text"
                         placeholder="Grade"
-                        value={tempGrade[submission.id] || ""} // Use the temporary grade if not yet submitted
+                        value={tempGrade[submission.id] || ""}
                         onChange={(e) =>
                           handleGradeChange(submission.id, e.target.value)
                         }
                       />
-                      <button onClick={() => handleGradeSubmission(submission.id)}>
+                      <button
+                        className="grade-button"
+                        onClick={() => handleGradeSubmission(submission.id)}
+                      >
                         Grade
                       </button>
-                    </>
+                    </div>
                   )}
                 </td>
               </tr>

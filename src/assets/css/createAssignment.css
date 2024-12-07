@@ -1,0 +1,85 @@
+/* Styling for the Create Assignment form */
+form {
+    width: 120%; /* Increased width */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    width: 100%;  /* Ensure full width */
+    height: 40px; /* Uniform height for all inputs */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+input[type="file"] {
+    padding: 6px; /* Padding for file input */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2b3e50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #356da2;
+}
+
+button:active {
+    background-color: #2b3e50;
+}
+
+button:disabled {
+    background-color: #8494a2;
+    cursor: not-allowed;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
