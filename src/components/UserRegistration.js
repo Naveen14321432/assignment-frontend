@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
 import { registerUser } from '../services/UserService';
 import './UserRegistration.css';
+import Navbar from './Navbar';
 
 const UserRegistration = () => {
   const [userDTO, setUserDTO] = useState({
@@ -56,13 +56,12 @@ const UserRegistration = () => {
 
   return (
     <div>
-      <nav className="navbar">
-        <Link to="/" className="navbar-link">Logout</Link>
-      </nav>
-
+      <Navbar />
+      <br></br>
+      <br></br>
       <div className="form-container">
         <h2>Register</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-box">
           <input name="name" placeholder="Name" onChange={handleChange} required />
           <input name="email" placeholder="Email" onChange={handleChange} required />
           <input name="username" placeholder="Username" onChange={handleChange} required />
@@ -93,6 +92,7 @@ const UserRegistration = () => {
           </div>
 
           <button type="submit">Register</button>
+          <center><a href='/'>Logout</a></center>
         </form>
       </div>
     </div>

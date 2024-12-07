@@ -19,12 +19,20 @@ body {
 /* Form container */
 .form-container {
   background-color: #fff;
-  padding: 2rem;
+  padding: 1rem;
   width: 600px;
-  max-width: 480px;
+  max-width: 500px;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+}
+
+.form-box{
+  background-color: #fff;
+  padding: 2rem;
+  width: 400px;
+  max-width: 480px;
+  box-shadow: none;
 }
 
 .form-container .radio-group select {
@@ -46,14 +54,9 @@ body {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
-  color: #007bff;
+  color: #2b3e50;
 }
 
-.form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
 
 
 /* Form input fields */
@@ -100,7 +103,7 @@ input {
 /* Submit button */
 .form-container button {
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #2b3e50;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -111,32 +114,7 @@ input {
 }
 
 .form-container button:hover {
-  background-color: #0056b3;
+  background-color: #2b3e50;
   transform: translateY(-2px);
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-  .form-container {
-    padding: 1.5rem;
-    max-width: 90%;
-  }
-
-  .form-container h2 {
-    font-size: 1.6rem;
-  }
-
-  .form-container button {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-container h2 {
-    font-size: 1.4rem;
-  }
-
-  .form-container button {
-    font-size: 0.9rem;
-  }
-}

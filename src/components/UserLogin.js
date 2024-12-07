@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/userLogin.css';
+import Navbar from './Navbar';
 
 const BASE_API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8888';
 
@@ -38,6 +39,8 @@ const UserLogin = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="login-form-container">
       <h2 className="login-title">Login</h2>
       <form onSubmit={handleSubmit} className="login-form">
@@ -59,6 +62,7 @@ const UserLogin = () => {
         <button type="submit" className="login-button">Login</button>
       </form>
     </div>
+    </>
   );
 };
 

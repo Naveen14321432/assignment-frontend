@@ -1,11 +1,27 @@
 /* General styling for the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    color: #333;
+  }
+
 .login-form {
-    background-color: white;
-    
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px; /* Increased width */
+    width: 400px;
+    max-width: 500px; /* Increased width */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -16,11 +32,11 @@
 /* Styling for the form container */
 .login-form-container {
     margin: left 100px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 200%;
+    width: 600px;
     max-width: 450px; /* Increased width */
     text-align: center;
     display: flex;
